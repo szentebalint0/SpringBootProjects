@@ -11,4 +11,14 @@ public class MyRestController {
         return "Hello World";
     }
 
+    @GetMapping("/test")
+    public String teszt() {
+        return "test";
+    }
+
+    @GetMapping("/error")
+    public String error() {
+        return "Valami nem oke";
+    } 
+
 }
