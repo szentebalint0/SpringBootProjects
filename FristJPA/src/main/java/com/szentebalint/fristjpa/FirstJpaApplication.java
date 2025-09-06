@@ -10,18 +10,17 @@ import org.springframework.context.annotation.Bean;
 import java.util.List;
 
 @SpringBootApplication
-public class FristJpaApplication {
+public class FirstJpaApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(FristJpaApplication.class, args);
+        SpringApplication.run(FirstJpaApplication.class, args);
     }
 
     @Bean
     public CommandLineRunner commandLineRunner(StudentDAO studentDAO) {
-        return args -> {
-            printDatabase(studentDAO);
-        };
+        return args -> createMultipleStudents(studentDAO);
     }
+
 
     private void createStudent(StudentDAO studentDAO) {
 
@@ -55,6 +54,26 @@ public class FristJpaApplication {
             System.out.println(student);
         }
 
+    }
+
+    private void updateStudent(StudentDAO studentDAO) {
+
+        studentDAO.update(5, "email", "renamedexaple@test.com");
+
+        System.out.println("Student updated successfully with id: " + studentDAO.findById(5));
+
+    }
+
+    private void deleteStudent(StudentDAO studentDAO) {
+
+        studentDAO.deleteById(5);
+        System.out.println("Student deleted successfully with id: 5");
+
+    }
+
+    private void clearDatabase(StudentDAO studentDAO) {
+        studentDAO.deleteAll();
+        System.out.println("All students deleted successfully");
     }
 
 }
