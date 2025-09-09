@@ -1,6 +1,8 @@
 package com.szentebalint.fullcrudapp;
 
-import org.springframework.boot.ApplicationArguments;
+import com.szentebalint.fullcrudapp.dao.ProductDAO;
+import com.szentebalint.fullcrudapp.dao.ProductDAOImpl;
+import com.szentebalint.fullcrudapp.entity.Product;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -9,15 +11,29 @@ import org.springframework.context.annotation.Bean;
 @SpringBootApplication
 public class FullCrudAppApplication {
 
+    private final ProductDAOImpl productDAOImpl;
+
+    public FullCrudAppApplication(ProductDAOImpl productDAOImpl) {
+        this.productDAOImpl = productDAOImpl;
+    }
+
     public static void main(String[] args) {
         SpringApplication.run(FullCrudAppApplication.class, args);
     }
 
     @Bean
-    public CommandLineRunner run(ApplicationArguments args){
+    public CommandLineRunner run(ProductDAO productDAO) {
 
-        return runner -> System.out.println("Hello World");
+        saveProduct(productDAO);
 
     }
+
+    private void saveProduct(ProductDAO productDAO) {
+
+        Product product = new Product("notebook", "apple", 499.99);
+        productDAOImpl.addProduct(product);
+
+    }
+
 
 }
