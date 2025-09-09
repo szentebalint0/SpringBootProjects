@@ -2,9 +2,12 @@ package com.szentebalint.fullcrudapp.dao;
 
 import com.szentebalint.fullcrudapp.entity.Product;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Repository
 public class ProductDAOImpl implements ProductDAO {
@@ -24,4 +27,66 @@ public class ProductDAOImpl implements ProductDAO {
         System.out.println("Product added successfully with id of: " + product.getProductId());
 
     }
+
+    @Override
+    @Transactional
+    public void addProductByArray(Product[] products) {
+
+        for  (Product product : products) {
+            entityManager.persist(product);
+        }
+
+    }
+
+    @Override
+    public Product getProduct(int productId) {
+        return  entityManager.find(Product.class, productId);
+    }
+
+    @Override
+    public List<Product> getAllProducts() {
+        TypedQuery<Product> query = entityManager.createQuery("FROM Product", Product.class);
+        return query.getResultList();
+    }
+
+    @Override
+    @Transactional
+    public void updateProductById(int id, String field, String value) {
+
+        Product temp = this.getProduct(id);
+
+        switch (field) {
+            case "name" ->  temp.setProductName(value);
+            case "manufacturer" ->  temp.setManufacturer(value);
+            case "price" ->  temp.setPrice(Double.parseDouble(value));
+            default -> {
+                System.out.println("Invalid field");
+                return;
+            }
+        }
+
+        entityManager.merge(temp);
+
+        System.out.println("Product updated successfully with id of: " + temp.getProductId());
+    }
+
+    @Override
+    @Transactional
+    public void deleteProduct(int productId) {
+
+        entityManager.remove(getProduct(productId));
+        System.out.println("Product deleted successfully with id of: " + productId);
+
+    }
+
+    @Override
+    @Transactional
+    public void deleteAllProducts() {
+
+        entityManager.createQuery("DELETE FROM Product").executeUpdate();
+
+        System.out.println("All products deleted successfully");
+
+    }
+
 }
