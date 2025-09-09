@@ -24,13 +24,13 @@ public class FullCrudAppApplication {
     @Bean
     public CommandLineRunner run(ProductDAO productDAO) {
 
-        saveProduct(productDAO);
+        return runner -> saveProduct(productDAO);
 
     }
 
     private void saveProduct(ProductDAO productDAO) {
 
-        Product product = new Product("notebook", "apple", 499.99);
+        Product product = new Product("notebook", "lenovo", 359.99);
         productDAOImpl.addProduct(product);
 
     }
