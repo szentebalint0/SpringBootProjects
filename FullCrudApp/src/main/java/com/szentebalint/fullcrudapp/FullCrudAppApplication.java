@@ -1,11 +1,9 @@
 package com.szentebalint.fullcrudapp;
 
-import com.szentebalint.fullcrudapp.repository.ProductDAO;
 import com.szentebalint.fullcrudapp.entity.Product;
-import org.springframework.boot.CommandLineRunner;
+import com.szentebalint.fullcrudapp.repository.ProductDAO;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Bean;
 
 import java.util.List;
 

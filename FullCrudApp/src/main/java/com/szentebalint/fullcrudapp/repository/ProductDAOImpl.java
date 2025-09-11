@@ -5,7 +5,6 @@ import jakarta.persistence.EntityManager;
 import jakarta.persistence.TypedQuery;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -20,7 +19,6 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
-    @Transactional
     public void addProduct(Product product) {
 
         entityManager.persist(product);
@@ -29,7 +27,6 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
-    @Transactional
     public void addProductByArray(Product[] products) {
 
         for  (Product product : products) {
@@ -50,7 +47,6 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
-    @Transactional
     public void updateProductById(int id, String field, String value) {
 
         Product temp = this.getProduct(id);
@@ -71,7 +67,6 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
-    @Transactional
     public void deleteProduct(int productId) {
 
         entityManager.remove(getProduct(productId));
@@ -80,7 +75,6 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
-    @Transactional
     public void deleteAllProducts() {
 
         entityManager.createQuery("DELETE FROM Product").executeUpdate();
