@@ -1,6 +1,6 @@
 package com.szentebalint.fullcrudapp;
 
-import com.szentebalint.fullcrudapp.dao.ProductDAO;
+import com.szentebalint.fullcrudapp.repository.ProductDAO;
 import com.szentebalint.fullcrudapp.entity.Product;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -16,12 +16,12 @@ public class FullCrudAppApplication {
         SpringApplication.run(FullCrudAppApplication.class, args);
     }
 
-    @Bean
-    public CommandLineRunner run(ProductDAO productDAO) {
-
-        return runner -> getAllProducts(productDAO);
-
-    }
+//    @Bean
+//    public CommandLineRunner run(ProductDAO productDAO) {
+//
+//        return runner -> getAllProducts(productDAO);
+//
+//    }
 
     private void saveProduct(ProductDAO productDAO) {
 

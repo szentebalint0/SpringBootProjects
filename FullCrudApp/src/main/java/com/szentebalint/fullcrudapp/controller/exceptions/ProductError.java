@@ -1,4 +1,4 @@
-package com.szentebalint.fullcrudapp.webshopcontroller.exceptions;
+package com.szentebalint.fullcrudapp.controller.exceptions;
 
 import lombok.*;
 

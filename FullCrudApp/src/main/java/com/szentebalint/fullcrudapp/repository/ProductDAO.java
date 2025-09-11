@@ -1,4 +1,4 @@
-package com.szentebalint.fullcrudapp.dao;
+package com.szentebalint.fullcrudapp.repository;
 
 import com.szentebalint.fullcrudapp.entity.Product;
 
