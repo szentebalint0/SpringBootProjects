@@ -10,7 +10,9 @@ public interface ProductService {
 
     Product getProductById(int productId);
 
-    Product updateProduct(int id, String field, String value);
+    Product saveProduct(Product product);
+
+    Product patchProduct(Product product);
 
     void deleteProduct(int id);
 
