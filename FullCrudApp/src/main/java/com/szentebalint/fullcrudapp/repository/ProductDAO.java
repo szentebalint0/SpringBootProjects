@@ -14,7 +14,7 @@ public interface ProductDAO {
 
     List<Product> getAllProducts();
 
-    void updateProductById(int id, String field, String value);
+    Product updateProduct(Product product);
 
     void deleteProduct(int productId);
 

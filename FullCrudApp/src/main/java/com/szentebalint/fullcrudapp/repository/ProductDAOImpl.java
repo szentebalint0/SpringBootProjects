@@ -47,23 +47,8 @@ public class ProductDAOImpl implements ProductDAO {
     }
 
     @Override
-    public void updateProductById(int id, String field, String value) {
-
-        Product temp = this.getProduct(id);
-
-        switch (field) {
-            case "name" ->  temp.setProductName(value);
-            case "manufacturer" ->  temp.setManufacturer(value);
-            case "price" ->  temp.setPrice(Double.parseDouble(value));
-            default -> {
-                System.out.println("Invalid field");
-                return;
-            }
-        }
-
-        entityManager.merge(temp);
-
-        System.out.println("Product updated successfully with id of: " + temp.getProductId());
+    public Product updateProduct(Product product) {
+        return null;
     }
 
     @Override

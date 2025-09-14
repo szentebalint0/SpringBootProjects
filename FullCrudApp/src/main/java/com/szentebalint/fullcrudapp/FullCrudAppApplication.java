@@ -71,9 +71,7 @@ public class FullCrudAppApplication {
         }
     }
 
-    private void updateProduct(ProductDAO productDAO) {
-        productDAO.updateProductById(2,"name", "pc");
-    }
+
 
     private void deleteProduct(ProductDAO productDAO) {
         productDAO.deleteProduct(2);
