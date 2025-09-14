@@ -49,19 +49,7 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product patchProduct(int id, Map<String, Object> patchPayload) {
-
-        if (this.getProductById(id) == null) {
-
-            throw new ProductNotFoundException("Product not found with id " + id);
-        }
-
-        Product product = this.getProductById(id);
-
-        if (patchPayload.containsKey("id")) {
-
-            throw new RuntimeException("ID is not allowed in request body - " + id);
-        }
+    public Product patch(Product product, Map<String, Object> patchPayload) {
 
         Product patchedProduct = apply(patchPayload, product);
 

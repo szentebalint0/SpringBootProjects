@@ -13,7 +13,7 @@ public interface ProductService {
 
     Product save(Product product);
 
-    Product patchProduct(int id, Map<String, Object> patchPayload);
+    Product patch(Product product, Map<String, Object> patchPayload);
 
     void deleteById(int id);
 
