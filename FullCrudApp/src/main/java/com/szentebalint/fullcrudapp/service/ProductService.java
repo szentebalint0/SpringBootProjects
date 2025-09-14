@@ -3,6 +3,7 @@ package com.szentebalint.fullcrudapp.service;
 import com.szentebalint.fullcrudapp.entity.Product;
 
 import java.util.List;
+import java.util.Map;
 
 public interface ProductService {
 
@@ -12,7 +13,7 @@ public interface ProductService {
 
     Product save(Product product);
 
-    Product patchProduct(Product product);
+    Product patchProduct(int id, Map<String, Object> patchPayload);
 
     void deleteById(int id);
 
